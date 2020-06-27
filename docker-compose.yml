@@ -1,0 +1,10 @@
+version: "3"
+services:
+  db:
+    image: postgres:11.5-alpine
+    environment:
+      POSTGRES_PASSWORD: 'TheP@ssw0rd12345'
+      POSTGRES_USER: 'springuser'
+      POSTGRES_DB: 'db_example'
+    ports:
+      - 5432:5432
