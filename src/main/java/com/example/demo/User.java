@@ -6,17 +6,17 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
 
     private String name;
     private String email;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
