@@ -29,3 +29,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+jib {
+    container {
+        creationTime = 'USE_CURRENT_TIMESTAMP'
+    }
+}
