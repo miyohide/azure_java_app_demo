@@ -33,5 +33,6 @@ test {
 jib {
     container {
         creationTime = 'USE_CURRENT_TIMESTAMP'
+        jvmFlags = ['-javaagent:/applicationInsights/applicationinsights-agent-3.0.0-PREVIEW.4.jar']
     }
 }
