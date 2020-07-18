@@ -10,10 +10,15 @@ services:
       - 5432:5432
     volumes:
       - database:/var/lib/postgresql/data
+  cache:
+    image: redis:6.0.5-alpine
+    ports:
+      - 6379:6379
   app:
     image: demo:0.0.1-SNAPSHOT
     depends_on:
       - db
+      - cache
     ports:
       - 8080:8080
 
