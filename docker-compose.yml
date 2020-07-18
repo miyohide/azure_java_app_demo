@@ -14,8 +14,6 @@ services:
     image: demo:0.0.1-SNAPSHOT
     depends_on:
       - db
-    environment:
-      APPLICATIONINSIGHTS_CONNECTION_STRING: <ApplicationInsightsの接続文字列>
     ports:
       - 8080:8080
 
