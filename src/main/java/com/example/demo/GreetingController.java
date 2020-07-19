@@ -24,6 +24,10 @@ public class GreetingController {
             sessionInfo.setName(name);
             sessionInfo.setCreatedAt(new Date());
         }
-        return new Greeting(sessionInfo.getId(), String.format(template, sessionInfo.getName()));
+        return new Greeting(
+                sessionInfo.getId(),
+                String.format(template, sessionInfo.getName()),
+                sessionInfo.getCreatedAt()
+                );
     }
 }
