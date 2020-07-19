@@ -20,9 +20,10 @@ public class GreetingController {
     @GetMapping("/")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         if (sessionInfo.getName() == null) {
+            sessionInfo.setId(counter.incrementAndGet());
             sessionInfo.setName(name);
             sessionInfo.setCreatedAt(new Date());
         }
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        return new Greeting(sessionInfo.getId(), String.format(template, sessionInfo.getName()));
     }
 }
