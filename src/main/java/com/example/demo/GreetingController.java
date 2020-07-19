@@ -4,7 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -29,5 +31,12 @@ public class GreetingController {
                 String.format(template, sessionInfo.getName()),
                 sessionInfo.getCreatedAt()
                 );
+    }
+
+    @GetMapping("/goodbye")
+    public String goodbye(HttpSession session) {
+        Optional<String> name = Optional.ofNullable(sessionInfo.getName());
+        session.invalidate();
+        return "Goodbye " + name.orElse("anonymous");
     }
 }
