@@ -1,7 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'com.google.cloud.tools.jib' version '2.4.0'
     id 'java'
 }
 
@@ -13,17 +12,9 @@ repositories {
     mavenCentral()
 }
 
-bootBuildImage {
-    imageName = "miyohide/spring-boot-app"
-}
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.session:spring-session-data-redis'
-    runtimeOnly 'org.postgresql:postgresql'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
@@ -31,10 +22,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-jib {
-    container {
-        creationTime = 'USE_CURRENT_TIMESTAMP'
-    }
 }
