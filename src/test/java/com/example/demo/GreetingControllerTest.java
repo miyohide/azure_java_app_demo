@@ -31,4 +31,11 @@ class GreetingControllerTest {
         mockMvc.perform(get("/")).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").value("Hello, World!"));
     }
+
+    @Test
+    void greetingWithParam() throws Exception {
+        String paramValue = "hogehoge";
+        mockMvc.perform(get("/?name=" + paramValue)).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value("Hello, " + paramValue + "!"));
+    }
 }
