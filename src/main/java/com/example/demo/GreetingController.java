@@ -21,10 +21,10 @@ public class GreetingController {
         String s1 = new String();
         String s2 = new String();
 
-        for (int i = 0; i < 1_000; i++) {
+        for (int i = 0; i < 100; i++) {
             s1 = s1.concat("a");
         }
-        for (int i = 0; i < 1_000; i++) {
+        for (int i = 0; i < 100; i++) {
             s2 = s2.concat(s2);
             logger.info("-----" + s2);
         }
