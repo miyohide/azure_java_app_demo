@@ -18,16 +18,16 @@ public class GreetingController {
     @GetMapping("/")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         logger.info("----- start GreetingController#greeting");
-        String s1 = new String();
-        String s2 = new String();
-
-        for (int i = 0; i < 100; i++) {
-            s1 = s1.concat("a");
-        }
-        for (int i = 0; i < 100; i++) {
-            s2 = s2.concat(s2);
-            logger.info("-----" + s2);
-        }
+//        String s1 = new String();
+//        String s2 = new String();
+//
+//        for (int i = 0; i < 100; i++) {
+//            s1 = s1.concat("a");
+//        }
+//        for (int i = 0; i < 100; i++) {
+//            s2 = s2.concat(s2);
+//            logger.info("-----" + s2);
+//        }
         return new Greeting(counter.incrementAndGet(), String.format(template, name), new Date());
     }
 }
