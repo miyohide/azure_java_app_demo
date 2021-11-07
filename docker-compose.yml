@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0.27
+    environment:
+      MYSQL_ROOT_PASSWORD: ThePassword001
+      MYSQL_DATABASE: db_example
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: ThePassword001
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 3306:3306
