@@ -30,3 +30,8 @@ jobs:
         run: ./gradlew build
         env:
           DB_HOST: db
+      - name: save test log
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          path: ./build/reports
