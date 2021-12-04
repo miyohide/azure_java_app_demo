@@ -3,6 +3,11 @@ package com.example.demo;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+@SessionScope
+@Component
 public class SessionInfo implements Serializable {
   private static final long serialVersionUID = 1L;
 
