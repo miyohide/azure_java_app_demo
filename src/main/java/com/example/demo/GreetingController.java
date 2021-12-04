@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +17,7 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
     private final SessionInfo sessionInfo;
+    private static final Logger logger = LoggerFactory.getLogger(GreetingController.class);
 
     public GreetingController(SessionInfo sessionInfo) {
         this.sessionInfo = sessionInfo;
@@ -22,6 +25,7 @@ public class GreetingController {
 
     @GetMapping("/")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        logger.info("GET to '/'. name = [" + name + "], sessionInfo = [" + sessionInfo.toString() + "]");
         if (sessionInfo.getName() == null) {
             sessionInfo.setId(counter.incrementAndGet());
             sessionInfo.setName(name);
