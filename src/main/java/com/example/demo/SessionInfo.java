@@ -39,4 +39,8 @@ public class SessionInfo implements Serializable {
     this.createdAt = createdAt;
   }
 
+  @Override
+  public String toString() {
+    return "SessionInfo id=[" + id + "], name=[" + name + "], createdAt=[" + createdAt + "]";
+  }
 }
