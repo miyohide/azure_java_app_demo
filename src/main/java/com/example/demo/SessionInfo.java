@@ -14,6 +14,7 @@ public class SessionInfo implements Serializable {
   private long id;
   private String name;
   private Date createdAt;
+  private String instanceName;
 
   public long getId() {
     return id;
@@ -39,8 +40,17 @@ public class SessionInfo implements Serializable {
     this.createdAt = createdAt;
   }
 
+  public String getInstanceName() {
+    return instanceName;
+  }
+
+  public void setInstanceName(String instanceName) {
+    this.instanceName = instanceName;
+  }
+
   @Override
   public String toString() {
-    return "SessionInfo id=[" + id + "], name=[" + name + "], createdAt=[" + createdAt + "]";
+    return "SessionInfo id=[" + id + "], instanceName=[" + instanceName + "], name=[" + name + "], createdAt=[" + createdAt
+        + "]";
   }
 }

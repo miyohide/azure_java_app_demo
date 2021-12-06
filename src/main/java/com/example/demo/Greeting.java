@@ -6,11 +6,13 @@ public class Greeting {
     private final long id;
     private final String content;
     private final Date createdAt;
+    private final String instanceName;
 
-    public Greeting(long id, String content, Date createdAt) {
+    public Greeting(long id, String content, Date createdAt, String instanceName) {
         this.id = id;
         this.content = content;
         this.createdAt = createdAt;
+        this.instanceName = instanceName;
     }
 
     public long getId() {
@@ -21,5 +23,11 @@ public class Greeting {
         return content;
     }
 
-    public Date getCreatedAt() { return createdAt; }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getInstanceName() {
+        return instanceName;
+    }
 }
