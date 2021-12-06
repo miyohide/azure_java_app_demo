@@ -21,7 +21,7 @@ public class GreetingController {
     private final String instanceName;
     private static final Logger logger = LoggerFactory.getLogger(GreetingController.class);
 
-    public GreetingController(SessionInfo sessionInfo, @Value("${instance.name}") String instanceName) {
+    public GreetingController(SessionInfo sessionInfo, @Value("${instance.name:app}") String instanceName) {
         this.sessionInfo = sessionInfo;
         this.instanceName = instanceName;
     }
