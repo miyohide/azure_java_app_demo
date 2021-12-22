@@ -11,10 +11,15 @@ http.get("/goodbye")
 # セッションを作成
 response = http.get("/?name=1234567890")
 session_value = response['set-cookie'].split(';')[0]
-# セッション付きで送付
+
 headers = { "Cookie" => session_value }
-response = http.get("/", headers)
 
-body = JSON.parse(response.body, symbolize_names: true)
+10.times do |i|
+  # セッション付きで送付
+  response = http.get("/", headers)
 
-p "return code = [#{response.code}], body = [#{body[:content]}]"
+  body = JSON.parse(response.body, symbolize_names: true)
+
+  p "send count = [#{i}], return code = [#{response.code}], body = [#{body[:content]}]"
+  sleep(1)
+end
