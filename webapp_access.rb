@@ -1,9 +1,14 @@
 require "net/http"
 require "json"
 require "optparse"
+require "logger"
 
 ACCESS_HOST = "localhost"
 ACCESS_PORT = 8080
+
+# ロガーの設定
+logger = Logger.new(STDOUT)
+logger.level = Logger::INFO
 
 # 引数解析
 opt = OptionParser.new
@@ -30,6 +35,6 @@ params[:c].to_i.times do |i|
 
   body = JSON.parse(response.body, symbolize_names: true)
 
-  p "send count = [#{i}], return code = [#{response.code}], body = [#{body[:content]}]"
+  logger.info("send count = [#{i}], return code = [#{response.code}], body = [#{body[:content]}]")
   sleep(params[:s].to_i)
 end
