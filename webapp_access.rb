@@ -19,6 +19,8 @@ opt.on("-s VAL") { |v| v }
 
 opt.parse!(ARGV, into: params)
 
+logger.debug("count = [#{params[:c]}], sleep = [#{params[:s]}]")
+
 http = Net::HTTP.new(ACCESS_HOST, ACCESS_PORT)
 
 # すでにあるセッションを削除
