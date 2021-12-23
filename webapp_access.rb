@@ -38,5 +38,5 @@ params[:count].to_i.times do |i|
   body = JSON.parse(response.body, symbolize_names: true)
 
   logger.info("send count = [#{i}], return code = [#{response.code}], body = [#{body[:content]}]")
-  sleep(params[:s].to_i)
+  sleep(params[:sleep].to_f/1000)
 end
