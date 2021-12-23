@@ -14,12 +14,12 @@ logger.level = Logger::INFO
 opt = OptionParser.new
 params = {}
 
-opt.on("-c VAL") { |v| v }
-opt.on("-s VAL") { |v| v }
+opt.on("-c", "--count=VAL", "number of requests") { |v| v }
+opt.on("-s", "--sleep=VAL", "sleep time (millisecond)") { |v| v }
 
 opt.parse!(ARGV, into: params)
 
-logger.debug("count = [#{params[:c]}], sleep = [#{params[:s]}]")
+logger.debug("count = [#{params[:count]}], sleep = [#{params[:sleep]}]")
 
 http = Net::HTTP.new(ACCESS_HOST, ACCESS_PORT)
 
@@ -31,7 +31,7 @@ session_value = response['set-cookie'].split(';')[0]
 
 headers = { "Cookie" => session_value }
 
-params[:c].to_i.times do |i|
+params[:count].to_i.times do |i|
   # セッション付きで送付
   response = http.get("/", headers)
 
