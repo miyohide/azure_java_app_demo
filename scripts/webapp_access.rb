@@ -12,7 +12,7 @@ class WebappAccess
     @logger = Logger.new(STDOUT)
     @logger.level = Logger::INFO
     @args = args
-    @params = parse_arguments
+    @params = {}
   end
 
   def parse_arguments
@@ -27,10 +27,11 @@ class WebappAccess
 
     @logger.debug("count = [#{params[:count]}], sleep = [#{params[:sleep]}], name = [#{params[:name]}]")
 
-    params
+    @params = params
   end
 
   def access
+    @params = parse_arguments if @params.empty?
     http = Net::HTTP.new(ACCESS_HOST, ACCESS_PORT)
 
     # すでにあるセッションを削除
