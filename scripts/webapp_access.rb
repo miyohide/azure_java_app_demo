@@ -52,6 +52,3 @@ class WebappAccess
     end        
   end
 end
-
-webapp_access = WebappAccess.new(ARGV)
-webapp_access.access
