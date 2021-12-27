@@ -17,13 +17,15 @@ class WebappAccessTest < Minitest::Test
   end
 
   def test_access
+    name_param = "hoge1"
+    cookie_data = "data1"
     stub_request(:any, "localhost:8080/goodbye")
-    stub_request(:any, "localhost:8080/?name=hoge").
-      to_return(headers: {"set-cookie" => "data1;data2;data3"})
+    stub_request(:any, "localhost:8080/?name=#{name_param}").
+      to_return(headers: {"set-cookie" => "#{cookie_data};data2;data3"})
     stub_request(:any, "localhost:8080/").
-      with(headers: {"Cookie" => /data1/}).
+      with(headers: {"Cookie" => /#{cookie_data}/}).
       to_return(body: {content: "aaa"}.to_json)
-    @web_access = WebappAccess.new(["--count", "3", "--sleep", "200", "--name", "hoge"])
+    @web_access = WebappAccess.new(["--count", "3", "--sleep", "200", "--name", name_param])
     @web_access.access
   end
 end
